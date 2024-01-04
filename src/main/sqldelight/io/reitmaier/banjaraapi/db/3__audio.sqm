@@ -1,0 +1,12 @@
+import io.reitmaier.banjaraapi.repo.AudioId;
+import io.reitmaier.banjaraapi.repo.PhotoId;
+
+CREATE TABLE IF NOT EXISTS audio(
+  id BIGSERIAL AS AudioId PRIMARY KEY,
+  photo_id BIGSERIAL AS PhotoId REFERENCES photo(id) ON DELETE CASCADE NOT NULL,
+  hash VARCHAR(64) NOT NULL UNIQUE,
+  path VARCHAR(200) NOT NULL UNIQUE,
+  length BIGINT NOT NULL,
+  created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+  updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
+);

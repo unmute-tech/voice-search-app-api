@@ -1,0 +1,29 @@
+selectById:
+SELECT id
+FROM photo
+WHERE id = :id;
+
+selectByHash:
+SELECT id
+FROM photo
+WHERE hash = :hash;
+
+selectByAlias:
+SELECT id
+FROM photo
+WHERE alias = :alias;
+
+selectPhotosWithAudio:
+SELECT *
+FROM PhotoWithAudio;
+
+
+selectPhotoWithAudioById:
+SELECT *
+FROM PhotoWithAudio
+WHERE id = :id;
+
+insertAndGetId:
+INSERT INTO photo(hash, path, alias)
+VALUES (:hash, :path, :alias)
+RETURNING id;

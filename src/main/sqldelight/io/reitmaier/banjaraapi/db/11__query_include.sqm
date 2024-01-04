@@ -1,0 +1,3 @@
+import io.reitmaier.banjaraapi.repo.Include;
+ALTER TABLE query DROP COLUMN include;
+ALTER TABLE query ADD COLUMN include VARCHAR(100) AS Include NOT NULL DEFAULT 'Unknown';

@@ -1,0 +1,10 @@
+import io.reitmaier.banjaraapi.repo.PhotoId;
+
+CREATE TABLE IF NOT EXISTS photo(
+  id BIGSERIAL AS PhotoId PRIMARY KEY,
+  hash VARCHAR(64) NOT NULL UNIQUE,
+  path VARCHAR(200) NOT NULL UNIQUE,
+  alias VARCHAR(255) NOT NULL UNIQUE,
+  created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+  updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
+);

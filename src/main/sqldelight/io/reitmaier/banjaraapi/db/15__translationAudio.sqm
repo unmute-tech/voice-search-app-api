@@ -1,0 +1,15 @@
+import io.reitmaier.banjaraapi.repo.Language;
+import io.reitmaier.banjaraapi.repo.QueryId;
+import io.reitmaier.banjaraapi.repo.TranslationAudioId;
+import io.reitmaier.banjaraapi.repo.TranscriptionStatus;
+
+CREATE TABLE IF NOT EXISTS translationAudio(
+  id BIGSERIAL AS TranslationAudioId PRIMARY KEY,
+  query_id UUID AS QueryId REFERENCES query(id) ON DELETE CASCADE NOT NULL,
+  language VARCHAR(100) AS Language NOT NULL,
+  path VARCHAR(200) NOT NULL UNIQUE,
+  transcription_status VARCHAR(20) AS TranscriptionStatus NOT NULL DEFAULT 'UNKNOWN',
+  transcript TEXT NOT NULL DEFAULT '',
+  created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+  updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
+);

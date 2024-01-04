@@ -1,0 +1,22 @@
+version: "3.9"
+services:
+
+  adminer-voice-search-api:
+    image: adminer
+    container_name: adminer-voice-search-api
+    restart: always
+    depends_on:
+      - postgres-voice-search-api
+    ports:
+      - "8085:8080"
+
+  postgres-voice-search-api:
+    image: postgres:latest
+    restart: always
+    ports:
+      - "5432:5432"
+    container_name: postgres-voice-search-api
+    environment:
+      - POSTGRES_USER=voicesearchapi
+      - POSTGRES_PASSWORD=voicesearchapi
+      - POSTGRES_DB=voicesearchapi

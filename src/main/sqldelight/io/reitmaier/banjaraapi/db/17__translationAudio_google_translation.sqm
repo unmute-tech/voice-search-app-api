@@ -1,0 +1,2 @@
+import io.reitmaier.banjaraapi.repo.TranslationEnGoogle;
+ALTER TABLE translationAudio ADD COLUMN translation_google_en TEXT AS TranslationEnGoogle;

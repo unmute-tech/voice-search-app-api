@@ -1,0 +1,6 @@
+CREATE VIEW HydratedResult AS
+SELECT r.*,
+    p.alias AS photo_alias,
+    p.path AS photo_path
+FROM queryResult r
+JOIN photo p ON r.photo_id = p.id;

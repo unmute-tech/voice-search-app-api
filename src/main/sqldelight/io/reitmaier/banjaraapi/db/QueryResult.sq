@@ -1,0 +1,19 @@
+selectByQueryIdPhotoId:
+SELECT *
+FROM queryResult
+WHERE query_id = :query_id AND photo_id = :photo_id;
+
+selectByQueryId:
+SELECT *
+FROM queryResult
+WHERE query_id = :query_id ORDER BY confidence DESC;
+
+insert:
+INSERT INTO queryResult(query_id, photo_id, confidence, rating, ranking)
+VALUES (:query_id, :photo_id, :confidence, :rating, :ranking);
+
+updateResultRating:
+UPDATE queryResult
+SET rating = :rating,
+    updated_at = NOW()
+WHERE query_id = ? AND photo_id = ?;

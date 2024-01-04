@@ -1,0 +1,28 @@
+selectById:
+SELECT id
+FROM audio
+WHERE id = :id;
+
+selectByHash:
+SELECT id
+FROM audio
+WHERE hash = :hash;
+
+selectByPhotoId:
+SELECT *
+FROM audio
+WHERE photo_id = :photo_id;
+
+selectAudioLengthSum:
+SELECT SUM(length)
+FROM audio;
+
+selectAudioLengthSumByPhotoId:
+SELECT SUM(length)
+FROM audio
+WHERE photo_id = :photo_id;
+
+insertAndGetId:
+INSERT INTO audio(photo_id, hash, path, length)
+VALUES (:photo_id, :hash, :path, :length)
+RETURNING id;

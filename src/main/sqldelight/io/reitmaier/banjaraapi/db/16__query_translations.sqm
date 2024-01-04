@@ -1,0 +1,2 @@
+import io.reitmaier.banjaraapi.repo.TranslationMarathi;
+ALTER TABLE query ADD COLUMN translation_mr TEXT AS TranslationMarathi NOT NULL DEFAULT '';

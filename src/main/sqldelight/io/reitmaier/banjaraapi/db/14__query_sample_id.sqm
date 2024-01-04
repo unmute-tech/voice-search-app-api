@@ -1,0 +1,2 @@
+import io.reitmaier.banjaraapi.repo.SampleId;
+ALTER TABLE query ADD COLUMN sample_id INTEGER AS SampleId NOT NULL DEFAULT -1;

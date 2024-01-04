@@ -1,0 +1,10 @@
+img {
+    max-height: 500px;
+}
+
+.positive {
+    border: solid green;
+}
+.negative {
+    border: solid red;
+}

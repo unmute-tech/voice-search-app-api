@@ -1,0 +1,71 @@
+selectById:
+SELECT *
+FROM query
+WHERE id = :id;
+
+selectBySampleId:
+SELECT *
+FROM query
+WHERE sample_id = :id;
+
+selectNextById:
+SELECT *
+FROM query
+WHERE
+created_at > (SELECT created_at FROM query WHERE id = :id)
+ORDER BY created_at DESC LIMIT 1;
+
+selectPreviousById:
+SELECT *
+FROM query
+WHERE
+created_at < (SELECT created_at FROM query WHERE id = :id)
+ORDER BY created_at DESC LIMIT 1;
+
+selectByPhotoId:
+SELECT *,
+qr.ranking
+FROM query q
+JOIN queryResult qr ON (qr.query_id = q.id)
+WHERE q.include = 'Include' AND qr.rating = '1' AND photo_id = :photo_id
+ORDER BY q.created_at DESC;
+
+
+insertAndGetId:
+INSERT INTO query(id, path)
+VALUES (:id, :path)
+RETURNING id;
+
+selectAll:
+SELECT * FROM query ORDER BY created_at DESC;
+
+updateCommentPath:
+UPDATE query
+SET commentPath = :commentPath,
+    updated_at = NOW()
+WHERE id = ?;
+
+updateInclude:
+UPDATE query
+SET include = :include
+WHERE id = ?;
+
+updateTextComment:
+UPDATE query
+SET text_comment = :text_comment
+WHERE id = ?;
+
+updateTranslationEnglish:
+UPDATE query
+SET translation_en = :translation_en
+WHERE id = ?;
+
+updateTranslationMarathi:
+UPDATE query
+SET translation_mr = ?
+WHERE id = ?;
+
+updateTranslationHindi:
+UPDATE query
+SET translation_hi = :translation_hi
+WHERE id = ?;

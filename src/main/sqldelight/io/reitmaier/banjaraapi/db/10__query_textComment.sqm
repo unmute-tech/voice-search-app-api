@@ -1,0 +1,1 @@
+ALTER TABLE query ADD COLUMN text_comment TEXT NOT NULL DEFAULT '';

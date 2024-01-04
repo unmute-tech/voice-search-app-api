@@ -1,0 +1,14 @@
+-- ALTER TABLE queryResult ADD COLUMN ranking INT NOT NULL DEFAULT -1;
+ALTER TABLE queryResult ADD COLUMN ranking INT NOT NULL;
+
+
+-- Manually update ranking on server
+-- WITH subquery AS (
+-- 	SELECT query_id, photo_id,
+--   (rank() OVER (PARTITION BY query_id ORDER BY confidence DESC)) AS rr
+--   FROM queryresult
+-- )
+-- UPDATE queryresult
+-- SET ranking = subquery.rr
+-- FROM subquery
+-- WHERE subquery.query_id = queryresult.query_id AND subquery.photo_id = queryresult.photo_id;

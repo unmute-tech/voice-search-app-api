@@ -1,0 +1,9 @@
+selectByQueryIdPhotoId:
+SELECT *
+FROM HydratedResult
+WHERE query_id = :query_id AND photo_id = :photo_id;
+
+selectByQueryId:
+SELECT *
+FROM HydratedResult
+WHERE query_id = :query_id ORDER BY confidence DESC;

@@ -1,0 +1,8 @@
+import io.reitmaier.banjaraapi.repo.QueryId;
+-- CREATE TABLE IF NOT EXISTS query(
+--   id UUID AS QueryId PRIMARY KEY,
+--   path VARCHAR(200) NOT NULL UNIQUE,
+--   created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+--   updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
+-- );
+ALTER TABLE query ADD COLUMN commentPath VARCHAR(400);

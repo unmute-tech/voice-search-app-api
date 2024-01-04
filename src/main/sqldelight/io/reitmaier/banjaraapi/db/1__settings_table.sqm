@@ -1,0 +1,11 @@
+import kotlinx.datetime.LocalDateTime;
+import java.time.OffsetDateTime;
+
+
+CREATE TABLE IF NOT EXISTS settings (
+  id INT NOT NULL,
+  version BIGINT NOT NULL,
+  PRIMARY KEY (id)
+);
+
+INSERT INTO settings VALUES (1, 2);

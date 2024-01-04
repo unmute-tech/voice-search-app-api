@@ -1,0 +1,13 @@
+import io.reitmaier.banjaraapi.repo.PhotoId;
+import io.reitmaier.banjaraapi.repo.QueryId;
+import io.reitmaier.banjaraapi.repo.Rating;
+
+CREATE TABLE IF NOT EXISTS queryResult(
+  query_id UUID AS QueryId REFERENCES query(id) ON DELETE CASCADE NOT NULL,
+  photo_id BIGSERIAL AS PhotoId REFERENCES photo(id) ON DELETE CASCADE NOT NULL,
+  confidence FLOAT NOT NULL,
+  rating INTEGER AS Rating NOT NULL DEFAULT 0,
+  created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+  updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+  PRIMARY KEY (query_id, photo_id)
+);

@@ -1,0 +1,4 @@
+import io.reitmaier.banjaraapi.repo.TranslationEnglish;
+import io.reitmaier.banjaraapi.repo.TranslationHindi;
+ALTER TABLE query ADD COLUMN translation_en TEXT AS TranslationEnglish NOT NULL DEFAULT '';
+ALTER TABLE query ADD COLUMN translation_hi TEXT AS TranslationHindi NOT NULL DEFAULT '';

@@ -1,0 +1,34 @@
+selectById:
+SELECT *
+FROM translationAudio
+WHERE id = :id;
+
+selectByQueryId:
+SELECT *
+FROM translationAudio ta
+WHERE ta.query_id = :query_id
+ORDER BY ta.language, ta.created_at;
+
+updateTranscriptionStatus:
+UPDATE translationAudio
+SET transcription_status = ?
+WHERE id = ?;
+
+updateTranscript:
+UPDATE translationAudio
+SET transcription_status = 'COMPLETED', transcript = ?
+WHERE id = ?;
+
+updateTranslation:
+UPDATE translationAudio
+SET translation_google_en = ?
+WHERE id = ?
+RETURNING translation_google_en;
+
+insertAndGetId:
+INSERT INTO translationAudio(query_id, language, path)
+VALUES (:query_id, :language, :path)
+RETURNING id;
+
+selectAll:
+SELECT * FROM translationAudio ORDER BY created_at DESC;

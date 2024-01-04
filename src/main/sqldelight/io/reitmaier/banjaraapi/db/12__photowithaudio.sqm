@@ -1,0 +1,7 @@
+CREATE VIEW PhotoWithAudio AS
+SELECT p.*,
+    SUM(a.length) AS audio_length
+   FROM photo p
+     JOIN audio a ON (a.photo_id = p.id)
+  GROUP BY p.id
+  ORDER BY audio_length DESC;
