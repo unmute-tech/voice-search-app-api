@@ -10,6 +10,20 @@ services:
     ports:
       - "8085:8080"
 
+  unmutelaunchapi:
+    container_name: unmutelaunchapi
+    image: unmutelaunchapi:latest
+    ports:
+      - "8080:8080"
+    depends_on:
+      - postgres-voice-search-api
+    volumes:
+    - ./data:/data
+    environment:
+     - POSTGRES_URL=jdbc:postgresql://postgres-unmutelaunchapi:5432/unmutelaunchapi
+     - POSTGRES_USERNAME=unmutelaunchapi
+     - POSTGRES_PASSWORD=unmutelaunchapi
+
   postgres-voice-search-api:
     image: postgres:latest
     restart: always

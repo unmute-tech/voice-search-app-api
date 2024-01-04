@@ -1,0 +1,10 @@
+* Voice Search App API Server
+The =Voice Search App= API Server is implemented in [[https://kotlinlang.org/][Kotlin]] and runs on the [[https://ktor.io/][ktor]] server framework. The API Server is used to collect recordings and ratings data from [[https://github.com/unmute-tech/voice-search-app][Voice Search App]].
+
+
+** Setup
+The [[build.gradle.kts][build.gradle.kts]] file contains build configurations to build, both a fat JAR of the API server as well as a dockerized version of the application.
+
+The [[docker/docker-compose.yml][docker-compose.yml]] file illustrates how the application can be deployed.  We strongly recommend that the =Voice Search App= API Server is properly secured, through a =.htaccess= password and the https protocol. We therefore recommend that the deployment managed through a reverse proxy, such as [[https://www.nginx.com/][nginx]] or [[https://traefik.io/traefik/][traefik]], to handle access control and encryption.
+** License
+Apache 2.0
